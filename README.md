@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -44,3 +45,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+=======
+# TodoApp
+This Todo App is a challange/intervju challange for a position on Husqvarna from Xamera
+>>>>>>> d40655e8c1175dda9f29c7aeb4af27c19b49958d
