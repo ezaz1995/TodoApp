@@ -6,16 +6,16 @@ interface Item {
   completed: boolean;
 }
 
-export default function TodoList(): any {
-  const [todos, setTodos] = useState<Item[]>([
+export default function TodoList(props: any): any {
+  const [todoItems, setTodoItems] = useState<Item[]>([
     { id: 1, todoText: "Hello world", completed: false },
     { id: 2, todoText: "test", completed: false },
     { id: 3, todoText: "Learn React", completed: false },
   ]);
 
   const onCompletHandler = (id: number) => {
-    setTodos(
-      todos.map((todo) => {
+    setTodoItems(
+      todoItems.map((todo) => {
         if (todo.id === id) {
           return { ...todo, completed: !todo.completed };
         }
@@ -24,11 +24,9 @@ export default function TodoList(): any {
     );
   };
 
-  //const addTodo = (newTodo) => {};
-
   return (
     <ul>
-      {todos.map((todo) => (
+      {todoItems.map((todo) => (
         <li
           key={todo.id}
           onClick={() => onCompletHandler(todo.id)}
