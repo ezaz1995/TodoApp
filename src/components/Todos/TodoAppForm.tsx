@@ -1,14 +1,28 @@
 import React, { ChangeEvent, useState } from "react";
 
-export default function TodoAppForm() {
-  const [enteredTodo, setEnteredTodo] = useState("");
+interface Item {
+  id: number;
+  todoText: string;
+  completed: boolean;
+}
 
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setEnteredTodo(event.target.value);
+export default function TodoAppForm(props: any) {
+  const [enteredTodo, setEnteredTodo] = useState<string>("");
+  const randomNumber = Math.trunc(Math.random() * 10000000 + 1);
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEnteredTodo(event.currentTarget.value);
   };
 
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
+
+    const newTodo: Item = {
+      id: randomNumber,
+      todoText: enteredTodo,
+      completed: false,
+    };
+
+    props.addTodo(newTodo);
   };
 
   return (
