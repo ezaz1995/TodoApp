@@ -1,13 +1,32 @@
 import "./App.css";
-import TodoApp from "./components/Todos/TodoApp";
+import { Item } from "./Interfaces";
+import React, { useState } from "react";
+import TodoForm from "./components/Todos/TodoForm";
+import TodoList from "./components/Todos/TodoList";
+import TodoNav from "./components/Todos/TodoNav";
 
-function App() {
+const App: React.FC = () => {
+  const [todoList, setTodoList] = useState<Item[]>([]);
+
+  const addTodo = (newTodo: Item) => {
+    setTodoList([
+      ...todoList,
+      {
+        id: Math.floor(Math.random() * 100000000) + 1,
+        todoText: newTodo.todoText,
+        completed: false,
+      },
+    ]);
+  };
+
   return (
     <div className="App">
       <h1>Todo app</h1>
-      <TodoApp />
+      <TodoForm addNewTodo={addTodo} />
+      <TodoList todoList={todoList} />
+      <TodoNav />
     </div>
   );
-}
+};
 
 export default App;
