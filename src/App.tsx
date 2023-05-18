@@ -52,6 +52,10 @@ const App: React.FC = () => {
     setTodoList(todoList.filter((todo) => todo.id !== id));
   };
 
+  const allTodoCounts = todoList.length;
+  const allActiveTodoCounts = todoList.filter((todo) => !todo.completed).length;
+  const allCompletedCountes = todoList.filter((todo) => todo.completed).length;
+
   return (
     <div className="App">
       <h1>Todo app</h1>
@@ -61,8 +65,14 @@ const App: React.FC = () => {
         completedTodo={completedTodoHandler}
         deleteTodo={deleteTodoHandler}
       />
-      <TodoClearAll />
-      <TodoNav />
+      {todoList.length !== 0 && (
+        <TodoClearAll todoList={todoList} setTodoList={setTodoList} />
+      )}
+      <TodoNav
+        allTodos={allTodoCounts}
+        allActive={allActiveTodoCounts}
+        allCompleted={allCompletedCountes}
+      />
     </div>
   );
 };

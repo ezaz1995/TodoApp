@@ -8,3 +8,9 @@ export interface Error {
   title: string;
   errorMessage: string;
 }
+
+export interface Status {
+  allTodos: number;
+  allActive: number;
+  allCompleted: number;
+}

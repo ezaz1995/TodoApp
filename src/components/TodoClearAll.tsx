@@ -1,9 +1,12 @@
-import { Item } from "../Interfaces";
-
 const TodoClearAll = (props: any) => {
+  const onClearAllHandler = () => {
+    localStorage.clear();
+    props.setTodoList([]);
+  };
+
   return (
     <div>
-      <button>Clear all Todo items</button>
+      <button onClick={onClearAllHandler}>Clear all Todos</button>
     </div>
   );
 };
