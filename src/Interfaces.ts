@@ -3,3 +3,8 @@ export interface Item {
   todoText: string;
   completed: boolean;
 }
+
+export interface Error {
+  title: string;
+  errorMessage: string;
+}
