@@ -34,6 +34,34 @@ const App: React.FC = () => {
     ]);
   };
 
+  const CheckAllTodos = (toggle: boolean) => {
+    if (toggle) {
+      console.log(toggle);
+      setTodoList(
+        todoList.map((todo: Item) => {
+          if (!todo.completed) {
+            return { ...todo, completed: toggle };
+          }
+          return todo;
+        })
+      );
+    } else {
+      console.log(toggle);
+      setTodoList(
+        todoList.map((todo: Item) => {
+          if (todo.completed) {
+            return { ...todo, completed: toggle };
+          }
+          return todo;
+        })
+      );
+    }
+  };
+
+  const clearAllTodos = (todos: Item[]) => {
+    setTodoList(todos.filter((todo: Item) => !todo.completed));
+  };
+
   const allTodoCounts = todoList.length;
   const allActiveTodoCounts = todoList.filter((todo) => !todo.completed).length;
   const allCompletedCountes = todoList.filter((todo) => todo.completed).length;
@@ -41,48 +69,57 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <h1 className="todo__title">Todo app</h1>
-      <TodoForm addNewTodo={addTodo} />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <TodoList
-              selectedPath=""
-              todoList={todoList}
-              setTodoList={setTodoList}
+      <TodoForm addNewTodo={addTodo} CheckAllTodos={CheckAllTodos} />
+      {allTodoCounts !== 0 && (
+        <>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <TodoList
+                  selectedPath=""
+                  todoList={todoList}
+                  setTodoList={setTodoList}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/active"
-          element={
-            <TodoList
-              selectedPath="active"
-              todoList={todoList}
-              setTodoList={setTodoList}
+            <Route
+              path="/active"
+              element={
+                <TodoList
+                  selectedPath="active"
+                  todoList={todoList}
+                  setTodoList={setTodoList}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/completed"
-          element={
-            <TodoList
-              selectedPath="completed"
-              todoList={todoList}
-              setTodoList={setTodoList}
+            <Route
+              path="/completed"
+              element={
+                <TodoList
+                  selectedPath="completed"
+                  todoList={todoList}
+                  setTodoList={setTodoList}
+                />
+              }
             />
-          }
-        />
-      </Routes>
-
-      {todoList.length !== 0 && (
-        <TodoClearAll todoList={todoList} setTodoList={setTodoList} />
+          </Routes>
+          <TodoClearAll todoList={todoList} setTodoList={setTodoList} />
+          <TodoNav
+            allTodos={allTodoCounts}
+            allActive={allActiveTodoCounts}
+            allCompleted={allCompletedCountes}
+          />
+          {allCompletedCountes !== 0 && (
+            <button
+              className="clear__completed__todos"
+              onClick={() => clearAllTodos(todoList)}
+            >
+              Clear completed todos
+            </button>
+          )}
+        </>
       )}
-      <TodoNav
-        allTodos={allTodoCounts}
-        allActive={allActiveTodoCounts}
-        allCompleted={allCompletedCountes}
-      />
     </div>
   );
 };

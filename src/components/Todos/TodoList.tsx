@@ -66,9 +66,7 @@ const TodoList = ({ selectedPath, todoList, setTodoList }: any) => {
   const onCompletedHandler = (id: number, completed: boolean) => {
     setTodoList(
       todoList.map((todo: Item) => {
-        if (todo.id === id) {
-          return { ...todo, completed: !completed };
-        }
+        if (todo.id === id) return { ...todo, completed: !completed };
 
         return todo;
       })
@@ -88,9 +86,8 @@ const TodoList = ({ selectedPath, todoList, setTodoList }: any) => {
   const onTextDoubleClickHandler = (id: number) => {
     setTodoList(
       todoList.map((todo: Item) => {
-        if (todo.id === id) {
-          return { ...todo, editing: true };
-        }
+        if (todo.id === id) return { ...todo, editing: true };
+
         return todo;
       })
     );

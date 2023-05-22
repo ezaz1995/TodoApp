@@ -48,6 +48,10 @@ code {
   color: #333;
 }
 
+.border {
+  outline: 0;
+}
+
 .todo__btn {
   background-color: #32860e;
   color: #fff;
@@ -55,6 +59,7 @@ code {
   border: none;
   padding: 0.5rem 1.2rem;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .todo__btn:hover {
@@ -76,6 +81,13 @@ code {
   padding-left: 1rem;
 }
 
+.check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 /* TodoList component*/
 .todo__list {
   background-color: #fff;
@@ -88,7 +100,7 @@ code {
 .todo__item {
   list-style-type: none;
   display: grid;
-  grid-template-columns: 0.5fr 1fr 1.3fr;
+  grid-template-columns: 0.5fr 1.5fr 0.5fr;
   align-items: center;
   font-size: 1.5rem;
 }
@@ -99,6 +111,7 @@ code {
   border: 1px solid #858585;
   border-radius: 50%;
   margin-right: 1rem;
+  cursor: pointer;
 }
 
 .myTrash {
@@ -111,6 +124,7 @@ code {
 
 .myTrash:hover {
   color: #ff0000;
+  cursor: pointer;
 }
 
 .todo__clear_all {
@@ -155,4 +169,23 @@ code {
 
 .active:hover {
   background-color: #17c118;
+  cursor: pointer;
+}
+
+.clear__completed__todos {
+  color: #fff;
+  background-color: #ff0000;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  position: absolute;
+  top: 6rem;
+  right: 3.3rem;
+}
+
+.clear__completed__todos:hover,
+.todo__clear_all:hover {
+  background-color: #ff7676;
+  cursor: pointer;
 }

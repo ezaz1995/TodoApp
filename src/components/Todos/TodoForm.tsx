@@ -3,6 +3,7 @@ import { Item, Error } from "../../Interfaces";
 
 const TodoForm = (props: any) => {
   const [enteredTodo, setEnteredTodo] = useState<string>("");
+  const [isToggle, setIsToggle] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
 
   const onSubmitFormHandler = (event: any): void => {
@@ -29,6 +30,12 @@ const TodoForm = (props: any) => {
     setEnteredTodo(event.target.value);
   };
 
+  const onCheckBoxHandler = (toggle: boolean) => {
+    if (toggle) setIsToggle(false);
+    else setIsToggle(true);
+    props.CheckAllTodos(toggle);
+  };
+
   const errorHandler = (): void => {
     setError(undefined);
   };
@@ -37,13 +44,23 @@ const TodoForm = (props: any) => {
     <div className="todo__container">
       <form className="todo__form" onSubmit={onSubmitFormHandler}>
         <input
-          className="todo__input"
+          className="todo__input border"
           type="text"
           placeholder="Add a task to do"
           onChange={onAddTodoHandler}
           onClick={errorHandler}
           value={enteredTodo}
+          autoFocus
         />
+        <div className="check">
+          <label htmlFor="check_all">Check all todos</label>
+          <input
+            onChange={() => onCheckBoxHandler(isToggle)}
+            type="checkbox"
+            name="check_all"
+            id="check_all"
+          />
+        </div>
         <button className="todo__btn" type="submit">
           Add Todo
         </button>

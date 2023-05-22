@@ -5,11 +5,9 @@ const TodoClearAll = (props: any) => {
   };
 
   return (
-    <div>
-      <button className="todo__clear_all" onClick={onClearAllHandler}>
-        Clear all Todos
-      </button>
-    </div>
+    <button className="todo__clear_all" onClick={onClearAllHandler}>
+      Clear all todos
+    </button>
   );
 };
 
