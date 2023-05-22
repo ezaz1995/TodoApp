@@ -143,8 +143,10 @@ code {
   display: flex;
   list-style-type: none;
   text-decoration: none;
-  justify-content: space-between;
-  font-size: 1.2rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
   margin-top: 1.5rem;
 }
 
@@ -173,19 +175,26 @@ code {
 }
 
 .clear__completed__todos {
-  color: #fff;
-  background-color: #ff0000;
+  color: #333;
+  background-color: transparent;
   padding: 0.5rem 0.75rem;
   font-size: 0.8rem;
   border-radius: 10px;
   border: none;
   position: absolute;
-  top: 6rem;
-  right: 3.3rem;
+  margin-top: 1rem;
 }
 
 .clear__completed__todos:hover,
 .todo__clear_all:hover {
-  background-color: #ff7676;
   cursor: pointer;
+  text-decoration: underline;
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rem;
 }

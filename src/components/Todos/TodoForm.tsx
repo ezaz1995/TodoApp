@@ -53,7 +53,9 @@ const TodoForm = (props: any) => {
           autoFocus
         />
         <div className="check">
-          <label htmlFor="check_all">Check all todos</label>
+          <label className="check__label" htmlFor="check_all">
+            Complete all
+          </label>
           <input
             onChange={() => onCheckBoxHandler(isToggle)}
             type="checkbox"

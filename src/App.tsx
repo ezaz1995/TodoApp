@@ -68,58 +68,64 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h1 className="todo__title">Todo app</h1>
-      <TodoForm addNewTodo={addTodo} CheckAllTodos={CheckAllTodos} />
-      {allTodoCounts !== 0 && (
-        <>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <TodoList
-                  selectedPath=""
-                  todoList={todoList}
-                  setTodoList={setTodoList}
-                />
-              }
+      <>
+        <h1 className="todo__title">Todo app</h1>
+        <TodoForm addNewTodo={addTodo} CheckAllTodos={CheckAllTodos} />
+        {allTodoCounts !== 0 && (
+          <>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <TodoList
+                    selectedPath=""
+                    todoList={todoList}
+                    setTodoList={setTodoList}
+                  />
+                }
+              />
+              <Route
+                path="/active"
+                element={
+                  <TodoList
+                    selectedPath="active"
+                    todoList={todoList}
+                    setTodoList={setTodoList}
+                  />
+                }
+              />
+              <Route
+                path="/completed"
+                element={
+                  <TodoList
+                    selectedPath="completed"
+                    todoList={todoList}
+                    setTodoList={setTodoList}
+                  />
+                }
+              />
+            </Routes>
+            <TodoClearAll todoList={todoList} setTodoList={setTodoList} />
+            {allCompletedCountes !== 0 && (
+              <button
+                className="clear__completed__todos"
+                onClick={() => clearAllTodos(todoList)}
+              >
+                Clear completed todos
+              </button>
+            )}
+            <TodoNav
+              allTodos={allTodoCounts}
+              allActive={allActiveTodoCounts}
+              allCompleted={allCompletedCountes}
             />
-            <Route
-              path="/active"
-              element={
-                <TodoList
-                  selectedPath="active"
-                  todoList={todoList}
-                  setTodoList={setTodoList}
-                />
-              }
-            />
-            <Route
-              path="/completed"
-              element={
-                <TodoList
-                  selectedPath="completed"
-                  todoList={todoList}
-                  setTodoList={setTodoList}
-                />
-              }
-            />
-          </Routes>
-          <TodoClearAll todoList={todoList} setTodoList={setTodoList} />
-          <TodoNav
-            allTodos={allTodoCounts}
-            allActive={allActiveTodoCounts}
-            allCompleted={allCompletedCountes}
-          />
-          {allCompletedCountes !== 0 && (
-            <button
-              className="clear__completed__todos"
-              onClick={() => clearAllTodos(todoList)}
-            >
-              Clear completed todos
-            </button>
-          )}
-        </>
-      )}
+          </>
+        )}
+      </>
+      <footer className="footer__container">
+        <span>Double-click to edit a todo</span>
+        <span>Created by ShaNawaz Hathalia</span>
+      </footer>
     </div>
   );
 };
