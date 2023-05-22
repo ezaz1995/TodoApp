@@ -34,20 +34,23 @@ const TodoForm = (props: any) => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmitFormHandler}>
+    <div className="todo__container">
+      <form className="todo__form" onSubmit={onSubmitFormHandler}>
         <input
+          className="todo__input"
           type="text"
           placeholder="Add a task to do"
           onChange={onAddTodoHandler}
           onClick={errorHandler}
           value={enteredTodo}
         />
-        <button type="submit">Add Todo</button>
+        <button className="todo__btn" type="submit">
+          Add Todo
+        </button>
       </form>
       {error && (
-        <div>
-          <p>{error.errorMessage}</p>
+        <div className="error__container">
+          <p className="error__message">{error.errorMessage}</p>
         </div>
       )}
     </div>

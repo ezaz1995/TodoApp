@@ -1,9 +1,10 @@
 import { Item } from "./Interfaces";
+import { Route, Routes } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import TodoForm from "./components/Todos/TodoForm";
 import TodoList from "./components/Todos/TodoList";
 import TodoNav from "./components/Todos/TodoNav";
-import TodoClearAll from "./components/TodoClearAll";
+import TodoClearAll from "./components/Todos/TodoClearAll";
 
 const getLocalStorageTodoList = (key: string) => {
   const saveTodoList = localStorage.getItem(key);
@@ -33,38 +34,47 @@ const App: React.FC = () => {
     ]);
   };
 
-  const completedTodoHandler = (id: number, completed: boolean) => {
-    setTodoList(
-      todoList.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, completed: completed };
-        }
-        return todo;
-      })
-    );
-  };
-
-  const deleteTodoHandler = (id: number) => {
-    const deleteIndex = todoList.findIndex((todo) => todo.id === id);
-
-    if (deleteIndex !== -1) todoList.splice(deleteIndex, 1);
-
-    setTodoList(todoList.filter((todo) => todo.id !== id));
-  };
-
   const allTodoCounts = todoList.length;
   const allActiveTodoCounts = todoList.filter((todo) => !todo.completed).length;
   const allCompletedCountes = todoList.filter((todo) => todo.completed).length;
 
   return (
     <div className="App">
-      <h1>Todo app</h1>
+      <h1 className="todo__title">Todo app</h1>
       <TodoForm addNewTodo={addTodo} />
-      <TodoList
-        todoList={todoList}
-        completedTodo={completedTodoHandler}
-        deleteTodo={deleteTodoHandler}
-      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <TodoList
+              selectedPath=""
+              todoList={todoList}
+              setTodoList={setTodoList}
+            />
+          }
+        />
+        <Route
+          path="/active"
+          element={
+            <TodoList
+              selectedPath="active"
+              todoList={todoList}
+              setTodoList={setTodoList}
+            />
+          }
+        />
+        <Route
+          path="/completed"
+          element={
+            <TodoList
+              selectedPath="completed"
+              todoList={todoList}
+              setTodoList={setTodoList}
+            />
+          }
+        />
+      </Routes>
+
       {todoList.length !== 0 && (
         <TodoClearAll todoList={todoList} setTodoList={setTodoList} />
       )}

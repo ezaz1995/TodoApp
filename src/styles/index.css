@@ -5,9 +5,154 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  background-color: #c0f7a2;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.App {
+  margin: 6rem auto;
+  width: 35rem;
+}
+
+.todo__title {
+  font-size: 2.5rem;
+  color: #32860e;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  padding: 1rem;
+}
+
+/*TodoForm component*/
+.todo__container {
+  background-color: #fff;
+  padding: 0.5rem 0.8rem;
+}
+
+.todo__form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo__input {
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.todo__btn {
+  background-color: #32860e;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.2rem;
+}
+
+.todo__btn:hover {
+  background-color: #17c118;
+}
+.todo__input::placeholder {
+  color: #858585;
+}
+
+.error__container {
+  border: 1px solid red;
+  border-radius: 10px;
+  margin-top: 1rem;
+  background-color: #ff7676;
+}
+
+.error__message {
+  font-size: 0.8rem;
+  padding-left: 1rem;
+}
+
+/* TodoList component*/
+.todo__list {
+  background-color: #fff;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.todo__item {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1.3fr;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.todo__mark {
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid #858585;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.myTrash {
+  color: #32860e;
+  width: 2rem;
+  height: 2rem;
+  justify-self: end;
+  padding-right: 1.5rem;
+}
+
+.myTrash:hover {
+  color: #ff0000;
+}
+
+.todo__clear_all {
+  color: #fff;
+  background-color: #ff0000;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  position: absolute;
+  top: 2rem;
+  right: 5rem;
+}
+/*TodoNav*/
+.nav__container {
+  display: flex;
+  list-style-type: none;
+  text-decoration: none;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.nav__link {
+  color: #333;
+  text-decoration: none;
+}
+.nav__link:active,
+.nav__link:link {
+  color: #fff;
+}
+
+.active {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: #32860e;
+}
+
+.active > .nav__link {
+  color: #fff;
+}
+
+.active:hover {
+  background-color: #17c118;
 }
