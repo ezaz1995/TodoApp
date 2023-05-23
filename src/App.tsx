@@ -6,6 +6,7 @@ import TodoList from "./components/Todos/TodoList";
 import TodoNav from "./components/Todos/TodoNav";
 import TodoClearAll from "./components/Todos/TodoClearAll";
 
+//Will retrive the values from localstorage in the browser
 const getLocalStorageTodoList = (key: string) => {
   const saveTodoList = localStorage.getItem(key);
   const initial = JSON.parse(String(saveTodoList));
@@ -23,6 +24,7 @@ const App: React.FC = () => {
     localStorage.setItem(LOCAL_STOREAGE_KEY, JSON.stringify(todoList));
   }, [todoList]);
 
+  //AddTodo: Will set the new todo item into todolist
   const addTodo = (newTodo: Item) => {
     setTodoList([
       ...todoList,
@@ -34,9 +36,12 @@ const App: React.FC = () => {
     ]);
   };
 
+  /*
+    CheckAllTodo: This function will mark all items in the todoList to completed if checkbox is clicked
+    else if its not clicked it will unmark all the items.
+  */
   const CheckAllTodos = (toggle: boolean) => {
     if (toggle) {
-      console.log(toggle);
       setTodoList(
         todoList.map((todo: Item) => {
           if (!todo.completed) {
@@ -46,7 +51,6 @@ const App: React.FC = () => {
         })
       );
     } else {
-      console.log(toggle);
       setTodoList(
         todoList.map((todo: Item) => {
           if (todo.completed) {
@@ -58,6 +62,7 @@ const App: React.FC = () => {
     }
   };
 
+  //ClearAllTodos: will remove all all todo items
   const clearAllTodos = (todos: Item[]) => {
     setTodoList(todos.filter((todo: Item) => !todo.completed));
   };

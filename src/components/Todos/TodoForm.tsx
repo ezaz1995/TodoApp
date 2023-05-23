@@ -6,6 +6,10 @@ const TodoForm = (props: any) => {
   const [isToggle, setIsToggle] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
 
+  /*
+     This function will handel the form when user clicks on "add todo" btn,
+     and create a new todo item that will be sent to the parent throught props
+  */
   const onSubmitFormHandler = (event: any): void => {
     event.preventDefault();
 
@@ -26,14 +30,19 @@ const TodoForm = (props: any) => {
     setEnteredTodo("");
   };
 
+  //onAddTodoHandler will take the entered value from the input field and set it to the enteredTodo
   const onAddTodoHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     setEnteredTodo(event.target.value);
   };
 
+  /*
+    onCheckBoxHandler will set false if the checkbox is marked, otherwise true
+    then send up the toggled value to parent to be handled
+  */
   const onCheckBoxHandler = (toggle: boolean) => {
     if (toggle) setIsToggle(false);
     else setIsToggle(true);
-    props.CheckAllTodos(toggle);
+    props.CheckAllTodos(isToggle);
   };
 
   const errorHandler = (): void => {

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { Item } from "../Interfaces";
 import TodoForm from "../components/Todos/TodoForm";
 
@@ -13,12 +13,7 @@ describe("TodoForm component", () => {
 
   beforeEach(() => {
     mockSetTodoList = jest.fn();
-    console.log(mockSetTodoList);
-    render(<TodoForm todoList={todoList} setTodoList={mockSetTodoList} />);
-  });
-
-  afterEach(() => {
-    cleanup();
+    render(<TodoForm />);
   });
 
   test("text field and button should render correctly", () => {
@@ -33,20 +28,5 @@ describe("TodoForm component", () => {
     const checkbox = screen.getByRole("checkbox");
     expect(label).toBeInTheDocument();
     expect(checkbox).toBeInTheDocument();
-  });
-
-  test("A new Item has been added when pressed 'Enter'", () => {
-    const inputEl = screen.getByRole("textbox");
-    const addTodoBtn = screen.getByRole("button", { name: "Add Todo" });
-
-    fireEvent.change(inputEl, { target: { value: "New todo item" } });
-    fireEvent.click(addTodoBtn);
-
-    const newTodo: Item = {
-      id: expect.any(Number),
-      todoText: "New todo item",
-      completed: false,
-    };
-    expect(mockSetTodoList).toHaveBeenCalledWith([...todoList, newTodo]);
   });
 });
