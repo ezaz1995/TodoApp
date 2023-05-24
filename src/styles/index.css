@@ -122,6 +122,12 @@ code {
   margin: 1.15rem 0rem;
 }
 
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .myTrash {
   color: #32860e;
   width: 2rem;

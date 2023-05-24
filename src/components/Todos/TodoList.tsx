@@ -1,7 +1,8 @@
 import { Item } from "../../Interfaces";
-import React from "react";
+import React, { useState } from "react";
 
 const TodoList = ({ selectedPath, todoList, setTodoList }: any) => {
+  const [hoverTodoId, setHoverTodoId] = useState<number | null>(null);
   const LOCAL_STOREAGE_KEY = "todoList";
   let emptyListName;
   let filterTodo = todoList;
@@ -22,6 +23,14 @@ const TodoList = ({ selectedPath, todoList, setTodoList }: any) => {
     default:
       break;
   }
+
+  const mouseEnterHandler = (id: number) => {
+    setHoverTodoId(id);
+  };
+
+  const mouseLeaveHandler = () => {
+    setHoverTodoId(null);
+  };
 
   const blurHandler = (id: number, value: string) => {
     if (value.trim() === "") {
@@ -125,25 +134,33 @@ const TodoList = ({ selectedPath, todoList, setTodoList }: any) => {
               autoFocus
             />
           ) : (
-            <p
-              onClick={() => onCompletedHandler(list.id, list.completed)}
-              onDoubleClick={() => onTextDoubleClickHandler(list.id)}
+            <div
+              className="wrapper"
+              onMouseEnter={() => mouseEnterHandler(list.id)}
+              onMouseLeave={mouseLeaveHandler}
             >
-              {list.title}
-            </p>
-          )}
+              <p
+                onClick={() => onCompletedHandler(list.id, list.completed)}
+                onDoubleClick={() => onTextDoubleClickHandler(list.id)}
+              >
+                {list.title}
+              </p>
 
-          <svg
-            role="trashbin"
-            onClick={() => onDeleteTodoHandler(list.id)}
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            className="bi bi-trash-fill myTrash"
-            viewBox="0 0 16 16"
-          >
-            <title>trash_img</title>
-            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-          </svg>
+              {hoverTodoId === list.id && (
+                <svg
+                  role="trashbin"
+                  onClick={() => onDeleteTodoHandler(list.id)}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  className="bi bi-trash-fill myTrash"
+                  viewBox="0 0 16 16"
+                >
+                  <title>trash_img</title>
+                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                </svg>
+              )}
+            </div>
+          )}
         </li>
       ))}
     </ul>
