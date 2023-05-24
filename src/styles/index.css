@@ -114,6 +114,14 @@ code {
   cursor: pointer;
 }
 
+.todo__edit {
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+  margin: 1.15rem 0rem;
+}
+
 .myTrash {
   color: #32860e;
   width: 2rem;

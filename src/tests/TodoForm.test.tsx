@@ -5,12 +5,6 @@ import TodoForm from "../components/Todos/TodoForm";
 describe("TodoForm component", () => {
   let mockSetTodoList: jest.Mock;
 
-  const todoList: Item[] = [
-    { id: 1, todoText: "Go Shopping", completed: false },
-    { id: 2, todoText: "Showering", completed: true },
-    { id: 3, todoText: "", completed: false },
-  ];
-
   beforeEach(() => {
     mockSetTodoList = jest.fn();
     render(<TodoForm addNewTodo={mockSetTodoList} />);
@@ -23,9 +17,10 @@ describe("TodoForm component", () => {
     expect(addTodoBtn).toBeInTheDocument();
   });
 
-  test("render todo form with only one 'Add todo' button", async () => {
-    const addTodoBtn = await screen.getAllByRole("button");
+  test("render todo form with only one 'Add todo' button", () => {
+    const addTodoBtn = screen.getAllByRole("button");
     expect(addTodoBtn).toHaveLength(1);
+    expect(addTodoBtn).not.toHaveLength(0);
   });
 
   test("Label and checkbox should be rendered", () => {
@@ -35,7 +30,7 @@ describe("TodoForm component", () => {
     expect(checkbox).toBeInTheDocument();
   });
 
-  test("Creates new todo on submit 'Add todo' button", () => {
+  test("Create a new todo on submit 'Add todo' button", () => {
     const textbox = screen.getByRole("textbox");
     const addTodoBtn = screen.getByRole("button", { name: "Add Todo" });
 

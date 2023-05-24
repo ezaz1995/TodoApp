@@ -27,7 +27,7 @@ describe("TodoList component", () => {
     render(<TodoList todoList={todoList} setTodoList={mockSetTodoList} />);
   });
 
-  test("Renders todoList based on filter method", () => {
+  test("Renders todoList item", () => {
     const todo = screen.getByText("Go Shopping");
     expect(todo).not.toBeNull();
     expect(todo).toBeInTheDocument();
