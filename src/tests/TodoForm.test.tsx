@@ -39,7 +39,7 @@ describe("TodoForm component", () => {
 
     const newTodo: Item = {
       id: expect.any(Number),
-      todoText: "a new todo item",
+      title: "a new todo item",
       completed: false,
     };
 

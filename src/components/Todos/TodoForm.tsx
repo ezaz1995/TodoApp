@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { Item, Error } from "../../Interfaces";
 
 const TodoForm = (props: any) => {
-  const [enteredTodo, setEnteredTodo] = useState<string>("");
+  const [enteredTitle, setEnteredTitle] = useState<string>("");
   const [isToggle, setIsToggle] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
 
@@ -13,7 +13,7 @@ const TodoForm = (props: any) => {
   const onSubmitFormHandler = (event: any): void => {
     event.preventDefault();
 
-    if (enteredTodo.trim().length === 0) {
+    if (enteredTitle.trim().length === 0) {
       setError({
         title: "Empty string.",
         errorMessage: "Please enter a valid todo, empty todo is not valid.",
@@ -22,17 +22,17 @@ const TodoForm = (props: any) => {
     }
     const newTodo: Item = {
       id: Math.floor(Math.random() * 100000000) + 1,
-      todoText: enteredTodo,
+      title: enteredTitle,
       completed: false,
     };
 
     props.addNewTodo(newTodo);
-    setEnteredTodo("");
+    setEnteredTitle("");
   };
 
   //onAddTodoHandler will take the entered value from the input field and set it to the enteredTodo
   const onAddTodoHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-    setEnteredTodo(event.target.value);
+    setEnteredTitle(event.target.value);
   };
 
   /*
@@ -58,7 +58,7 @@ const TodoForm = (props: any) => {
           placeholder="Add a task to do"
           onChange={onAddTodoHandler}
           onClick={errorHandler}
-          value={enteredTodo}
+          value={enteredTitle}
           autoFocus
         />
         <div className="check">

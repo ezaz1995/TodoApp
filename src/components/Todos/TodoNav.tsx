@@ -5,7 +5,7 @@ const NavLink = ({ to, children, ...props }: any) => {
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
   return (
-    <li className={isActive ? "active" : ""}>
+    <li className={isActive ? "active" : "not__active"}>
       <Link className="nav__link" to={to} {...props}>
         {children}
       </Link>

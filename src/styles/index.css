@@ -151,7 +151,7 @@ code {
   display: flex;
   list-style-type: none;
   text-decoration: none;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
   font-size: 0.8rem;
@@ -162,6 +162,7 @@ code {
   color: #333;
   text-decoration: none;
 }
+
 .nav__link:active,
 .nav__link:link {
   color: #fff;
@@ -171,6 +172,12 @@ code {
   padding: 0.5rem 1rem;
   border-radius: 10px;
   background-color: #32860e;
+}
+
+.not__active:hover {
+  background-color: #32860e;
+  padding: 0.5rem 0.7rem;
+  border-radius: 10px;
 }
 
 .active > .nav__link {

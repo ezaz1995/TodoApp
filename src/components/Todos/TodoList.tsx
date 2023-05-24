@@ -32,7 +32,7 @@ const TodoList = ({ selectedPath, todoList, setTodoList }: any) => {
           if (todo.id === id) {
             return {
               ...todo,
-              todoText: value.trim(),
+              title: value.trim(),
               editing: false,
             };
           }
@@ -117,7 +117,7 @@ const TodoList = ({ selectedPath, todoList, setTodoList }: any) => {
             <input
               className="todo__edit"
               type="text"
-              defaultValue={list.todoText}
+              defaultValue={list.title}
               onBlur={(event) => blurHandler(list.id, event.target.value)}
               onKeyDown={(event) =>
                 keyDownHandler(event, list.id, event.currentTarget.value)
@@ -129,7 +129,7 @@ const TodoList = ({ selectedPath, todoList, setTodoList }: any) => {
               onClick={() => onCompletedHandler(list.id, list.completed)}
               onDoubleClick={() => onTextDoubleClickHandler(list.id)}
             >
-              {list.todoText}
+              {list.title}
             </p>
           )}
 

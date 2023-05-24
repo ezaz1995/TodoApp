@@ -7,9 +7,9 @@ describe("App component", () => {
   let mockSetTodoList: jest.Mock;
 
   const todoList: Item[] = [
-    { id: 1, todoText: "Go Shopping", completed: false },
-    { id: 2, todoText: "Buy some new cloths", completed: false },
-    { id: 3, todoText: "Shower before breakfast", completed: true },
+    { id: 1, title: "Go Shopping", completed: false },
+    { id: 2, title: "Buy some new cloths", completed: false },
+    { id: 3, title: "Shower before breakfast", completed: true },
   ];
 
   beforeEach(() => {

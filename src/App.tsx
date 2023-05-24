@@ -30,7 +30,7 @@ const App: React.FC = () => {
       ...todoList,
       {
         id: Math.floor(Math.random() * 100000000) + 1,
-        todoText: newTodo.todoText,
+        title: newTodo.title,
         completed: false,
       },
     ]);

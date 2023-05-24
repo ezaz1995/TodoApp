@@ -1,6 +1,6 @@
 export interface Item {
   id: number;
-  todoText: string;
+  title: string;
   completed: boolean;
   editing?: boolean;
 }

@@ -6,20 +6,20 @@ import userEvent from "@testing-library/user-event";
 describe("TodoList component", () => {
   let mockSetTodoList: jest.Mock;
   const todoList: Item[] = [
-    { id: 1, todoText: "Go Shopping", completed: false, editing: false },
+    { id: 1, title: "Go Shopping", completed: false, editing: false },
     {
       id: 2,
-      todoText: "Buy some new cloths",
+      title: "Buy some new cloths",
       completed: false,
       editing: false,
     },
     {
       id: 3,
-      todoText: "Shower before breakfast",
+      title: "Shower before breakfast",
       completed: true,
       editing: false,
     },
-    { id: 4, todoText: "", completed: false, editing: false },
+    { id: 4, title: "", completed: false, editing: false },
   ];
 
   beforeEach(() => {
