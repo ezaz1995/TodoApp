@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { Item, Error } from "../../Interfaces";
+import type { Item, Error } from "../../Interfaces";
 
 const TodoForm = (props: any) => {
   const [enteredTitle, setEnteredTitle] = useState<string>("");

@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Item } from "../Interfaces";
+import type { Item } from "../Interfaces";
 import TodoForm from "../components/Todos/TodoForm";
 
 describe("TodoForm component", () => {
-  let mockSetTodoList: jest.Mock;
+  let mockSetTodoList: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
-    mockSetTodoList = jest.fn();
+    mockSetTodoList = vi.fn();
     render(<TodoForm addNewTodo={mockSetTodoList} />);
   });
 

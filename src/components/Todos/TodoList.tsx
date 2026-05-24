@@ -1,4 +1,4 @@
-import { Item } from "../../Interfaces";
+import type { Item } from "../../Interfaces";
 import React, { useState } from "react";
 
 const TodoList = ({ selectedPath, todoList, setTodoList }: any) => {

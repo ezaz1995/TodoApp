@@ -1,10 +1,10 @@
 import { screen, render, fireEvent } from "@testing-library/react";
-import { Item } from "../Interfaces";
+import type { Item } from "../Interfaces";
 import App from "../App";
 import TodoClearAll from "../components/Todos/TodoClearAll";
 
 describe("App component", () => {
-  let mockSetTodoList: jest.Mock;
+  let mockSetTodoList: ReturnType<typeof vi.fn>;
 
   const todoList: Item[] = [
     { id: 1, title: "Go Shopping", completed: false },
@@ -13,7 +13,7 @@ describe("App component", () => {
   ];
 
   beforeEach(() => {
-    mockSetTodoList = jest.fn();
+    mockSetTodoList = vi.fn();
     render(<App />);
   });
 

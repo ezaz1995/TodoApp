@@ -1,4 +1,4 @@
-import { Item } from "./Interfaces";
+import type { Item } from "./Interfaces";
 import { Route, Routes } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import TodoForm from "./components/Todos/TodoForm";

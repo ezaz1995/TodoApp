@@ -1,4 +1,4 @@
-import { Status } from "../../Interfaces";
+import type { Status } from "../../Interfaces";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
 const NavLink = ({ to, children, ...props }: any) => {

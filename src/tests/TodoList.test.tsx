@@ -1,10 +1,10 @@
-import { Item } from "../Interfaces";
-import { screen, render, fireEvent } from "@testing-library/react";
+import type { Item } from "../Interfaces";
+import { screen, render } from "@testing-library/react";
 import TodoList from "../components/Todos/TodoList";
 import userEvent from "@testing-library/user-event";
 
 describe("TodoList component", () => {
-  let mockSetTodoList: jest.Mock;
+  let mockSetTodoList: ReturnType<typeof vi.fn>;
   const todoList: Item[] = [
     { id: 1, title: "Go Shopping", completed: false, editing: false },
     {
@@ -23,7 +23,7 @@ describe("TodoList component", () => {
   ];
 
   beforeEach(() => {
-    mockSetTodoList = jest.fn();
+    mockSetTodoList = vi.fn();
     render(<TodoList todoList={todoList} setTodoList={mockSetTodoList} />);
   });
 
@@ -33,9 +33,10 @@ describe("TodoList component", () => {
     expect(todo).toBeInTheDocument();
   });
 
-  test("User double clicked on todo item", () => {
+  test("User double clicked on todo item", async () => {
+    const user = userEvent.setup();
     const todo = screen.getByText("Go Shopping");
-    userEvent.dblClick(todo);
+    await user.dblClick(todo);
     expect(mockSetTodoList).toHaveBeenCalled();
   });
 });
